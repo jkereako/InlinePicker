@@ -11,6 +11,7 @@ import Foundation
 /// Helper object whose responsibility is to build the data source for the table view.
 struct TableViewDataSource {
   static let dataSource: [CellModelType] = [
+    
     SubtitleCellModel(rowIndex: 0, title: "Title", subTitle: "subtitle"),
     SubtitleCellModel(rowIndex: 1, title: "Title", subTitle: "subtitle"),
     SubtitleCellModel(rowIndex: 2, title: "Title", subTitle: "subtitle"),

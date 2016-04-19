@@ -11,4 +11,5 @@ import Foundation
 protocol CellModelType {
   var state: CellModelState { get }
   var rowIndex: Int { get }
+  var values: [String] { get set }
 }

@@ -8,10 +8,22 @@
 
 import Foundation
 
-struct SubtitleCellModel: CellModelType {
+class SubtitleCellModel: NSObject, CellModelType {
   let state = CellModelState.Closed
 
   let rowIndex: Int
-  let title: String
-  let subTitle: String
+  var title: String
+  var subTitle: String
+  var values: [String] {
+    didSet {
+      self.subTitle = self.values.joinWithSeparator(" ")
+    }
+  }
+
+  init(rowIndex: Int, title: String, subTitle: String) {
+    self.rowIndex = rowIndex
+    self.title = title
+    self.subTitle = subTitle
+    values = [""]
+  }
 }

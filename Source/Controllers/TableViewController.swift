@@ -68,7 +68,7 @@ class TableViewController: UITableViewController {
 
   // MARK: - Delegate
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let cellModel = dataSource[indexPath.row]
+    var cellModel = dataSource[indexPath.row]
     // Prevents out-of-bounds indexing; either fetches the last row or the "next row".
     let rowIndex = min(indexPath.row + 1, dataSource.count - 1)
 
@@ -79,12 +79,16 @@ class TableViewController: UITableViewController {
 
       switch nextCellModel.state {
       case .Open:
+        cellModel.values = nextCellModel.values
+
         dataSource.removeAtIndex(nextCellModel.rowIndex)
 
         tableView.deleteRowsAtIndexPaths(
           [NSIndexPath(forRow: rowIndex, inSection: indexPath.section)],
           withRowAnimation: .Top
         )
+
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 
       case .Closed:
         var nextRowIndex = rowIndex
