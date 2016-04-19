@@ -11,10 +11,12 @@ import UIKit
 class PickerViewCellModel: NSObject, CellModelType {
   let state = CellModelState.Open
   let rowIndex: Int
-  private let dataSource = ["Hello", "World"]
+  var selectedTitles:[String]
+  private let dataSource: [[String]] = [["Hello", "World"]]
 
   init(rowIndex: Int) {
     self.rowIndex = rowIndex
+    selectedTitles = [String](count: dataSource.count, repeatedValue: "")
 
     super.init()
   }
@@ -22,11 +24,11 @@ class PickerViewCellModel: NSObject, CellModelType {
 
 extension PickerViewCellModel: UIPickerViewDataSource {
   func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-    return 1
+    return dataSource.count
   }
 
   func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return dataSource.count
+    return dataSource[component].count
   }
 }
 
@@ -34,6 +36,10 @@ extension PickerViewCellModel: UIPickerViewDelegate {
   func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) ->
     String? {
 
-      return dataSource[row]
+      return dataSource[component][row]
+  }
+
+  func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    selectedTitles[component] = dataSource[component][row]
   }
 }
