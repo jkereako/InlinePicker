@@ -99,10 +99,9 @@ class TableViewController: UITableViewController {
         if nextCellModel.rowIndex == cellModel.rowIndex {
           nextRowIndex = indexPath.row + 1
         }
-
-        dataSource.insert(
-          PickerViewCellModel(rowIndex: nextRowIndex), atIndex: nextRowIndex
-        )
+        let nextCellModel = PickerViewCellModel(rowIndex: nextRowIndex)
+        
+        dataSource.insert(nextCellModel, atIndex: nextRowIndex)
 
         tableView.insertRowsAtIndexPaths(
           [NSIndexPath(forRow: nextRowIndex, inSection: indexPath.section)],

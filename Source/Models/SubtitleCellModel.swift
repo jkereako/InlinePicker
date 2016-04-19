@@ -16,7 +16,7 @@ class SubtitleCellModel: NSObject, CellModelType {
   var subTitle: String
   var values: [String] {
     didSet {
-      self.subTitle = self.values.joinWithSeparator(" ")
+      self.subTitle = self.values.joinWithSeparator(", ")
     }
   }
 

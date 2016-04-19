@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36C12AFB1CC68EE100F17929 /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C12AFA1CC68EE100F17929 /* PickerViewDataSource.swift */; };
 		36D6430C1CC66F9700E0001C /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D6430B1CC66F9700E0001C /* TableViewDataSource.swift */; };
 		6202162B1CC5BED6003C71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202162A1CC5BED6003C71EE /* AppDelegate.swift */; };
 		6202162D1CC5BED6003C71EE /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202162C1CC5BED6003C71EE /* TableViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36C12AFA1CC68EE100F17929 /* PickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewDataSource.swift; sourceTree = "<group>"; };
 		36D6430B1CC66F9700E0001C /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		620216271CC5BED6003C71EE /* InlinePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InlinePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6202162A1CC5BED6003C71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				620216681CC5C3CD003C71EE /* SubtitleCellModel.swift */,
 				6202165E1CC5C13B003C71EE /* PickerViewCellModel.swift */,
 				36D6430B1CC66F9700E0001C /* TableViewDataSource.swift */,
+				36C12AFA1CC68EE100F17929 /* PickerViewDataSource.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36C12AFB1CC68EE100F17929 /* PickerViewDataSource.swift in Sources */,
 				6202162D1CC5BED6003C71EE /* TableViewController.swift in Sources */,
 				620216671CC5C37B003C71EE /* CellModelType.swift in Sources */,
 				620216611CC5C2BC003C71EE /* CellModelState.swift in Sources */,

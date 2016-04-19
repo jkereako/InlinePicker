@@ -12,11 +12,18 @@ class PickerViewCellModel: NSObject, CellModelType {
   let state = CellModelState.Open
   let rowIndex: Int
   var values:[String]
-  private let dataSource: [[String]] = [["Hello", "World"]]
+  let dataSource: [[String]] = PickerViewDataSource.dataSource
 
   init(rowIndex: Int) {
     self.rowIndex = rowIndex
-    values = [String](count: dataSource.count, repeatedValue: "")
+    self.values = [String](count: dataSource.count, repeatedValue: "")
+
+    // Initialize `values` to the first row in the data source so at least there is something.
+    var i = 0
+    for component in dataSource {
+      values[i] = component[0]
+      i += 1
+    }
 
     super.init()
   }

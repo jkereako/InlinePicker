@@ -15,6 +15,11 @@ class PickerCell: UITableViewCell, CellType {
     didSet {
       pickerView.dataSource = model
       pickerView.delegate = model
+
+      // Reset the selected views
+      for i in 0..<model.dataSource.count {
+        pickerView.selectRow(0, inComponent: i, animated: false)
+      }
     }
   }
 }
