@@ -83,7 +83,7 @@ class TableViewController: UITableViewController {
 
         tableView.deleteRowsAtIndexPaths(
           [NSIndexPath(forRow: rowIndex, inSection: indexPath.section)],
-          withRowAnimation: .Automatic
+          withRowAnimation: .Top
         )
 
       case .Closed:
@@ -102,7 +102,7 @@ class TableViewController: UITableViewController {
 
         tableView.insertRowsAtIndexPaths(
           [NSIndexPath(forRow: nextRowIndex, inSection: indexPath.section)],
-          withRowAnimation: .Automatic
+          withRowAnimation: .Top
         )
       }
       
