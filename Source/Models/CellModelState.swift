@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Simplifies code by allowing us to switch on `state` versus type casting.
 enum CellModelState {
   case Open
   case Closed

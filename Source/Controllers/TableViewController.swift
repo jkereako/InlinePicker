@@ -14,13 +14,7 @@ class TableViewController: UITableViewController {
     case Picker = "picker"
   }
 
-  private var dataSource: [CellModelType] = [
-    SubtitleCellModel(rowIndex: 0, title: "Title", subTitle: "subtitle"),
-    SubtitleCellModel(rowIndex: 1, title: "Title", subTitle: "subtitle"),
-    SubtitleCellModel(rowIndex: 2, title: "Title", subTitle: "subtitle"),
-    SubtitleCellModel(rowIndex: 3, title: "Title", subTitle: "subtitle"),
-    SubtitleCellModel(rowIndex: 4, title: "Title", subTitle: "subtitle")
-  ]
+  private var dataSource: [CellModelType] = TableViewDataSource.dataSource
 
   override func viewDidLoad() {
     super.viewDidLoad()

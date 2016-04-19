@@ -10,6 +10,42 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
+		<key>36D6430B1CC66F9700E0001C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>TableViewDataSource.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>36D6430C1CC66F9700E0001C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>36D6430B1CC66F9700E0001C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>36D6430D1CC6700200E0001C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>620216661CC5C37B003C71EE</string>
+				<string>6202166A1CC5CF37003C71EE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Types</string>
+			<key>path</key>
+			<string>Types</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>6202161E1CC5BED6003C71EE</key>
 		<dict>
 			<key>children</key>
@@ -116,6 +152,7 @@
 				<string>6202165F1CC5C13B003C71EE</string>
 				<string>6202166B1CC5CF37003C71EE</string>
 				<string>6202162B1CC5BED6003C71EE</string>
+				<string>36D6430C1CC66F9700E0001C</string>
 				<string>620216691CC5C3CD003C71EE</string>
 				<string>620216651CC5C31E003C71EE</string>
 				<string>6202165D1CC5C121003C71EE</string>
@@ -210,10 +247,8 @@
 			<array>
 				<string>6202165B1CC5C107003C71EE</string>
 				<string>6202166C1CC5D0D8003C71EE</string>
+				<string>36D6430D1CC6700200E0001C</string>
 				<string>6202162A1CC5BED6003C71EE</string>
-				<string>620216601CC5C2BC003C71EE</string>
-				<string>620216661CC5C37B003C71EE</string>
-				<string>6202166A1CC5CF37003C71EE</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1018,8 +1053,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Controllers</string>
 			<key>path</key>
 			<string>Controllers</string>
 			<key>sourceTree</key>
@@ -1073,6 +1106,8 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>CellModelState.swift</string>
 			<key>path</key>
 			<string>CellModelState.swift</string>
 			<key>sourceTree</key>
@@ -1169,13 +1204,13 @@
 		<dict>
 			<key>children</key>
 			<array>
+				<string>620216601CC5C2BC003C71EE</string>
 				<string>6202165E1CC5C13B003C71EE</string>
 				<string>620216681CC5C3CD003C71EE</string>
+				<string>36D6430B1CC66F9700E0001C</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Models</string>
 			<key>path</key>
 			<string>Models</string>
 			<key>sourceTree</key>
