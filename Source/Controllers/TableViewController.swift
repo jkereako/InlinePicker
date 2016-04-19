@@ -20,11 +20,7 @@ class TableViewController: UITableViewController {
     SubtitleCellModel(rowIndex: 2, title: "Title", subTitle: "subtitle"),
     SubtitleCellModel(rowIndex: 3, title: "Title", subTitle: "subtitle"),
     SubtitleCellModel(rowIndex: 4, title: "Title", subTitle: "subtitle")
-    ] {
-    didSet {
-      tableView.reloadData()
-    }
-  }
+  ]
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,6 +29,7 @@ class TableViewController: UITableViewController {
     tableView.estimatedRowHeight = 44
   }
 
+  // MARK: - Data source
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
@@ -75,6 +72,7 @@ class TableViewController: UITableViewController {
       }
   }
 
+  // MARK: - Delegate
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let cellModel = dataSource[indexPath.row]
 
@@ -86,7 +84,12 @@ class TableViewController: UITableViewController {
         dataSource.insert(
           PickerViewCellModel(rowIndex: indexPath.row + 1), atIndex: indexPath.row + 1
         )
-        
+
+        tableView.insertRowsAtIndexPaths(
+          [NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)],
+          withRowAnimation: .Automatic
+        )
+
         return
       }
 
@@ -95,12 +98,23 @@ class TableViewController: UITableViewController {
       switch nextCell.state {
       case .Open:
         dataSource.removeAtIndex(nextCell.rowIndex)
+
+        tableView.deleteRowsAtIndexPaths(
+          [NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)],
+          withRowAnimation: .Automatic
+        )
+
       case .Closed:
         dataSource.insert(
           PickerViewCellModel(rowIndex: indexPath.row + 1), atIndex: indexPath.row + 1
         )
-      }
 
+        tableView.insertRowsAtIndexPaths(
+          [NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)],
+          withRowAnimation: .Automatic
+        )
+      }
+      
     case .Open:
       break
     }
