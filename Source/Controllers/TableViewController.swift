@@ -75,49 +75,46 @@ class TableViewController: UITableViewController {
   // MARK: - Delegate
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let cellModel = dataSource[indexPath.row]
+    // Prevents out-of-bounds indexing; either fetches the last row or the "next row".
+    let rowIndex = min(indexPath.row + 1, dataSource.count - 1)
 
     switch cellModel.state {
     case .Closed:
+      // Investigate the next cell model: If it's open, close it, and if it's closed, open it.
+      let nextCellModel = dataSource[rowIndex]
 
-      // If the row is closed and the row is the last row, open the last row
-      if indexPath.row == dataSource.count - 1 {
-        dataSource.insert(
-          PickerViewCellModel(rowIndex: indexPath.row + 1), atIndex: indexPath.row + 1
-        )
-
-        tableView.insertRowsAtIndexPaths(
-          [NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)],
-          withRowAnimation: .Automatic
-        )
-
-        return
-      }
-
-      let nextCell = dataSource[indexPath.row + 1]
-
-      switch nextCell.state {
+      switch nextCellModel.state {
       case .Open:
-        dataSource.removeAtIndex(nextCell.rowIndex)
+        dataSource.removeAtIndex(nextCellModel.rowIndex)
 
         tableView.deleteRowsAtIndexPaths(
-          [NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)],
+          [NSIndexPath(forRow: rowIndex, inSection: indexPath.section)],
           withRowAnimation: .Automatic
         )
 
       case .Closed:
+        var nextRowIndex = rowIndex
+
+        // If `nextCellModel` and `cellModel` have the same index, then they both reference the last
+        // row in the table. If so, increment `nextRowIndex` by 1 so we may append a picker view to
+        // the bottom of the table.
+        if nextCellModel.rowIndex == cellModel.rowIndex {
+          nextRowIndex = indexPath.row + 1
+        }
+
         dataSource.insert(
-          PickerViewCellModel(rowIndex: indexPath.row + 1), atIndex: indexPath.row + 1
+          PickerViewCellModel(rowIndex: nextRowIndex), atIndex: nextRowIndex
         )
 
         tableView.insertRowsAtIndexPaths(
-          [NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)],
+          [NSIndexPath(forRow: nextRowIndex, inSection: indexPath.section)],
           withRowAnimation: .Automatic
         )
       }
       
     case .Open:
+      // Do not respond to a tap on an open row
       break
     }
   }
-  
 }
