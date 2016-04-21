@@ -10,10 +10,10 @@
         <scene sceneID="Kae-be-mHo">
             <objects>
                 <tableViewController id="0KG-YN-uKD" customClass="TableViewController" customModule="InlinePicker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XGM-tl-2EM">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="XGM-tl-2EM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="WHJ-96-fvD">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -21,7 +21,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="subtitle" textLabel="UEL-VL-drv" detailTextLabel="aKg-XH-2pi" style="IBUITableViewCellStyleValue1" id="wUC-5P-rmA" customClass="SubtitleCell" customModule="InlinePicker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wUC-5P-rmA" id="RKt-To-kVp">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -46,7 +46,7 @@
                                 <accessibility key="accessibilityConfiguration" identifier="subTitle"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="picker" rowHeight="216" id="fHQ-fv-mqC" customClass="PickerCell" customModule="InlinePicker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="116" width="600" height="216"/>
+                                <rect key="frame" x="0.0" y="137.5" width="600" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fHQ-fv-mqC" id="0nf-hF-bAX">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="215.5"/>

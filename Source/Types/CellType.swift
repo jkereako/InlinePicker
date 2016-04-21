@@ -11,5 +11,5 @@ import Foundation
 protocol CellType {
   associatedtype CellModel
 
-  var model: CellModel! { get set }
+  var model: CellModel? { get set }
 }

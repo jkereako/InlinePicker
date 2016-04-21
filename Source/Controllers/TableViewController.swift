@@ -61,7 +61,6 @@ class TableViewController: UITableViewController {
         }
 
         cell.model = cellModel as? PickerViewCellModel
-
         return cell
       }
   }
@@ -79,6 +78,10 @@ class TableViewController: UITableViewController {
 
       switch nextCellModel.state {
       case .Open:
+        let anIndexPath = NSIndexPath(forRow: rowIndex, inSection: indexPath.section)
+        let cell = tableView.cellForRowAtIndexPath(anIndexPath) as? PickerCell
+
+        cell?.model = nil
         cellModel.values = nextCellModel.values
 
         dataSource.removeAtIndex(nextCellModel.rowIndex)
@@ -88,7 +91,7 @@ class TableViewController: UITableViewController {
           withRowAnimation: .Top
         )
 
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        //        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 
       case .Closed:
         var nextRowIndex = rowIndex
@@ -100,12 +103,22 @@ class TableViewController: UITableViewController {
           nextRowIndex = indexPath.row + 1
         }
         let nextCellModel = PickerViewCellModel(rowIndex: nextRowIndex)
-        
+
         dataSource.insert(nextCellModel, atIndex: nextRowIndex)
 
-        tableView.insertRowsAtIndexPaths(
-          [NSIndexPath(forRow: nextRowIndex, inSection: indexPath.section)],
-          withRowAnimation: .Top
+        UIView.animateWithDuration(
+          0.25,
+          delay: 0,
+          usingSpringWithDamping: 0.6,
+          initialSpringVelocity: 0.3,
+          options: .CurveEaseIn,
+          animations: {
+            tableView.insertRowsAtIndexPaths(
+              [NSIndexPath(forRow: nextRowIndex, inSection: indexPath.section)],
+              withRowAnimation: .Top
+            )
+          },
+          completion: nil
         )
       }
       

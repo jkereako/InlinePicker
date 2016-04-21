@@ -11,13 +11,14 @@ import UIKit
 class PickerCell: UITableViewCell, CellType {
   @IBOutlet weak var pickerView: UIPickerView!
 
-  var model: PickerViewCellModel! {
+  var model: PickerViewCellModel? {
     didSet {
       pickerView.dataSource = model
       pickerView.delegate = model
 
       // Reset the selected views
-      for i in 0..<model.dataSource.count {
+      let limit = model?.dataSource.count ?? 0
+      for i in 0..<limit {
         pickerView.selectRow(0, inComponent: i, animated: false)
       }
     }

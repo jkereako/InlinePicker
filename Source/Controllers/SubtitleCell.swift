@@ -9,10 +9,10 @@
 import UIKit
 
 class SubtitleCell: UITableViewCell, CellType {
-  var model: SubtitleCellModel! {
+  var model: SubtitleCellModel? {
     didSet {
-      textLabel?.text = model.title
-      detailTextLabel?.text = model.subTitle
+      textLabel?.text = model?.title
+      detailTextLabel?.text = model?.subTitle
     }
   }
 }
