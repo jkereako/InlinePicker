@@ -17,8 +17,6 @@
 		620216301CC5BED6003C71EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6202162E1CC5BED6003C71EE /* Main.storyboard */; };
 		620216321CC5BED6003C71EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 620216311CC5BED6003C71EE /* Assets.xcassets */; };
 		620216351CC5BED6003C71EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 620216331CC5BED6003C71EE /* LaunchScreen.storyboard */; };
-		620216401CC5BED6003C71EE /* InlinePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202163F1CC5BED6003C71EE /* InlinePickerTests.swift */; };
-		6202164B1CC5BED6003C71EE /* InlinePickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202164A1CC5BED6003C71EE /* InlinePickerUITests.swift */; };
 		6202165D1CC5C121003C71EE /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202165C1CC5C121003C71EE /* PickerCell.swift */; };
 		6202165F1CC5C13B003C71EE /* PickerViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202165E1CC5C13B003C71EE /* PickerViewCellModel.swift */; };
 		620216611CC5C2BC003C71EE /* CellModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620216601CC5C2BC003C71EE /* CellModelState.swift */; };
@@ -59,10 +57,8 @@
 		620216341CC5BED6003C71EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		620216361CC5BED6003C71EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6202163B1CC5BED6003C71EE /* InlinePickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InlinePickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6202163F1CC5BED6003C71EE /* InlinePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlinePickerTests.swift; sourceTree = "<group>"; };
 		620216411CC5BED6003C71EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		620216461CC5BED6003C71EE /* InlinePickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InlinePickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6202164A1CC5BED6003C71EE /* InlinePickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlinePickerUITests.swift; sourceTree = "<group>"; };
 		6202164C1CC5BED6003C71EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6202165C1CC5C121003C71EE /* PickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
 		6202165E1CC5C13B003C71EE /* PickerViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewCellModel.swift; sourceTree = "<group>"; };
@@ -153,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				620216411CC5BED6003C71EE /* Info.plist */,
-				6202163F1CC5BED6003C71EE /* InlinePickerTests.swift */,
 				360FE52B1CC943DF00A9A5B8 /* TableViewControllerTests.swift */,
 				360FE52D1CC94DA000A9A5B8 /* TableViewDataSourceTests.swift */,
 				360FE5311CC9654900A9A5B8 /* PickerViewDataSourceTests.swift */,
@@ -165,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				6202164C1CC5BED6003C71EE /* Info.plist */,
-				6202164A1CC5BED6003C71EE /* InlinePickerUITests.swift */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -366,7 +360,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				620216401CC5BED6003C71EE /* InlinePickerTests.swift in Sources */,
 				360FE5321CC9654900A9A5B8 /* PickerViewDataSourceTests.swift in Sources */,
 				360FE52E1CC94DA000A9A5B8 /* TableViewDataSourceTests.swift in Sources */,
 				360FE52C1CC943DF00A9A5B8 /* TableViewControllerTests.swift in Sources */,
@@ -377,7 +370,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6202164B1CC5BED6003C71EE /* InlinePickerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
