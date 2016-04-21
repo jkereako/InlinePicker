@@ -10,17 +10,24 @@ import XCTest
 @testable import InlinePicker
 
 final class TableViewControllerTests: XCTestCase {
-  private var tableVC: TableViewController!
+  private var viewController: TableViewController!
 
   override func setUp() {
-    tableVC = TableViewController(style: .Plain, dataSource: TableViewDataSource.dataSource)
+    viewController = TableViewController(style: .Plain, dataSource: TableViewDataSource.dataSource)
   }
 
   override func tearDown() {
-    tableVC = nil
+    viewController = nil
   }
 
-  func testDataSource() {
-    XCTAssertNotNil(TableViewDataSource.dataSource)
+  func testNumberOfSections() {
+    XCTAssertEqual(viewController.numberOfSectionsInTableView(viewController.tableView), 1)
+  }
+
+  func testNumberOfRowsInSection() {
+    XCTAssertEqual(
+      viewController.tableView(viewController.tableView, numberOfRowsInSection: 0),
+      TableViewDataSource.dataSource.count
+    )
   }
 }
