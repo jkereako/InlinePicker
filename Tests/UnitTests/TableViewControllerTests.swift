@@ -14,7 +14,7 @@ final class TableViewControllerTests: XCTestCase {
   private let dataSource: [CellModelType] = [
     SubtitleCellModel(rowIndex: 0, title: "Row 1", subTitle: "subtitle 1"),
     SubtitleCellModel(rowIndex: 1, title: "Row 2", subTitle: "subtitle 2"),
-    SubtitleCellModel(rowIndex: 2, title: "Row 3", subTitle: "subtitle 3"),
+    PickerViewCellModel(rowIndex: 2),
     SubtitleCellModel(rowIndex: 3, title: "Row 4", subTitle: "subtitle 4"),
     SubtitleCellModel(rowIndex: 4, title: "Row 5", subTitle: "subtitle 5")
   ]
@@ -24,6 +24,7 @@ final class TableViewControllerTests: XCTestCase {
   }
 
   override func tearDown() {
+
     viewController = nil
   }
 
@@ -39,7 +40,7 @@ final class TableViewControllerTests: XCTestCase {
     )
   }
 
-  func testTableViewRowDequeue() {
+  func testTableViewDequeuesSubtitleRow() {
     viewController.tableView.registerClass(SubtitleCell.self, forCellReuseIdentifier: "subtitle")
     let indexPath = NSIndexPath(forRow: 0, inSection: 0)
     let cell = viewController.tableView(viewController.tableView, cellForRowAtIndexPath: indexPath)
@@ -47,4 +48,15 @@ final class TableViewControllerTests: XCTestCase {
     XCTAssertNotNil(cell)
     XCTAssertTrue(cell is SubtitleCell)
   }
+  /*
+  // This crashes because there the picker view is an IBOutlet and it is nil.
+  func testTableViewDequeuesPickerRow() {
+    viewController.tableView.registerClass(PickerCell.self, forCellReuseIdentifier: "picker")
+    let indexPath = NSIndexPath(forRow: 2, inSection: 0)
+    let cell = viewController.tableView(viewController.tableView, cellForRowAtIndexPath: indexPath)
+
+    XCTAssertNotNil(cell)
+    XCTAssertTrue(cell is PickerCell)
+  }
+  */
 }
