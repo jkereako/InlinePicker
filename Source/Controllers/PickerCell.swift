@@ -13,6 +13,10 @@ class PickerCell: UITableViewCell, CellType {
 
   var model: PickerViewCellModel? {
     didSet {
+      guard model != nil else {
+        return
+      }
+
       pickerView.dataSource = model
       pickerView.delegate = model
 

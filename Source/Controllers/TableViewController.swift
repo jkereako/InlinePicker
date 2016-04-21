@@ -16,6 +16,12 @@ class TableViewController: UITableViewController {
 
   private var dataSource: [CellModelType] = TableViewDataSource.dataSource
 
+  convenience init(style: UITableViewStyle, dataSource: [CellModelType]) {
+    self.init(style: style)
+
+    self.dataSource = dataSource
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
