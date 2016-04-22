@@ -10,7 +10,7 @@ import XCTest
 @testable import InlinePicker
 
 final class TableViewControllerTests: XCTestCase {
-  private var viewController: TableViewController!
+  private var sut: TableViewController!
   private let dataSource: [CellModelType] = [
     SubtitleCellModel(rowIndex: 0, title: "Row 1", subTitle: "subtitle 1"),
     SubtitleCellModel(rowIndex: 1, title: "Row 2", subTitle: "subtitle 2"),
@@ -20,30 +20,29 @@ final class TableViewControllerTests: XCTestCase {
   ]
 
   override func setUp() {
-    viewController = TableViewController(style: .Plain, dataSource: dataSource)
+    sut = TableViewController(style: .Plain, dataSource: dataSource)
   }
 
   override func tearDown() {
-
-    viewController = nil
+    sut = nil
   }
 
   func testNumberOfSections() {
-    XCTAssertEqual(viewController.numberOfSectionsInTableView(viewController.tableView), 1)
+    XCTAssertEqual(sut.numberOfSectionsInTableView(sut.tableView), 1)
   }
 
   func testNumberOfRowsInSection() {
     let section = 0
     XCTAssertEqual(
-      viewController.tableView(viewController.tableView, numberOfRowsInSection: section),
+      sut.tableView(sut.tableView, numberOfRowsInSection: section),
       dataSource.count
     )
   }
 
   func testTableViewDequeuesSubtitleRow() {
-    viewController.tableView.registerClass(SubtitleCell.self, forCellReuseIdentifier: "subtitle")
+    sut.tableView.registerClass(SubtitleCell.self, forCellReuseIdentifier: "subtitle")
     let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-    let cell = viewController.tableView(viewController.tableView, cellForRowAtIndexPath: indexPath)
+    let cell = sut.tableView(sut.tableView, cellForRowAtIndexPath: indexPath)
 
     XCTAssertNotNil(cell)
     XCTAssertTrue(cell is SubtitleCell)
