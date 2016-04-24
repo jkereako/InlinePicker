@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SubtitleCell: UITableViewCell, CellType {
+final class SubtitleCell: UITableViewCell, CellType {
   var model: SubtitleCellModel? {
     didSet {
       textLabel?.text = model?.title

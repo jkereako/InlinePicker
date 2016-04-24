@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SubtitleCellModel: NSObject, CellModelType {
+final class SubtitleCellModel: NSObject, CellModelType {
   let state = CellModelState.Closed
 
   let rowIndex: Int

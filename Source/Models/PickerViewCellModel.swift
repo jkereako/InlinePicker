@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PickerViewCellModel: NSObject, CellModelType {
+final class PickerViewCellModel: NSObject, CellModelType {
   let state = CellModelState.Open
   let rowIndex: Int
   var values:[String]
