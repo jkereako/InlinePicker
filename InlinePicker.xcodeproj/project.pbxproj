@@ -24,6 +24,7 @@
 		620216671CC5C37B003C71EE /* CellModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620216661CC5C37B003C71EE /* CellModelType.swift */; };
 		620216691CC5C3CD003C71EE /* SubtitleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620216681CC5C3CD003C71EE /* SubtitleCellModel.swift */; };
 		6202166B1CC5CF37003C71EE /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202166A1CC5CF37003C71EE /* CellType.swift */; };
+		62E5EC641CCD7DA6009D7D27 /* StoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5EC621CCD7D8E009D7D27 /* StoryboardTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		620216661CC5C37B003C71EE /* CellModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellModelType.swift; sourceTree = "<group>"; };
 		620216681CC5C3CD003C71EE /* SubtitleCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtitleCellModel.swift; sourceTree = "<group>"; };
 		6202166A1CC5CF37003C71EE /* CellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
+		62E5EC621CCD7D8E009D7D27 /* StoryboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				360FE52B1CC943DF00A9A5B8 /* TableViewControllerTests.swift */,
 				360FE52D1CC94DA000A9A5B8 /* TableViewDataSourceTests.swift */,
 				360FE5311CC9654900A9A5B8 /* PickerViewDataSourceTests.swift */,
+				62E5EC621CCD7D8E009D7D27 /* StoryboardTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62E5EC641CCD7DA6009D7D27 /* StoryboardTests.swift in Sources */,
 				360FE5321CC9654900A9A5B8 /* PickerViewDataSourceTests.swift in Sources */,
 				360FE52E1CC94DA000A9A5B8 /* TableViewDataSourceTests.swift in Sources */,
 				360FE52C1CC943DF00A9A5B8 /* TableViewControllerTests.swift in Sources */,

@@ -26,7 +26,7 @@ final class TableViewControllerTests: XCTestCase {
   override func tearDown() {
     sut = nil
   }
-
+  
   func testNumberOfSections() {
     XCTAssertEqual(sut.numberOfSectionsInTableView(sut.tableView), 1)
   }

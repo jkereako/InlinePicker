@@ -9,7 +9,7 @@
 import XCTest
 @testable import InlinePicker
 
-class PickerViewDataSourceTests: XCTestCase {
+final class PickerViewDataSourceTests: XCTestCase {
   func testDataSourceIsNotNil() {
     XCTAssertNotNil(PickerViewDataSource.dataSource)
   }
