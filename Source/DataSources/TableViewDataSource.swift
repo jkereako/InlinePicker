@@ -22,6 +22,12 @@ final class TableViewDataSource: NSObject {
     case Subtitle = "subtitle"
     case Picker = "picker"
   }
+
+  convenience init(dataSource: [CellModelType]) {
+    self.init()
+    
+    self.dataSource = dataSource
+  }
 }
 
 // MARK: - Data source

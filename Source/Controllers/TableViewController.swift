@@ -9,7 +9,7 @@
 import UIKit
 
 final class TableViewController: UITableViewController {
-  private var dataSource: TableViewDataSource!
+  var dataSource: TableViewDataSource!
 
   convenience init(style: UITableViewStyle, dataSource: TableViewDataSource) {
     self.init(style: style)
@@ -19,12 +19,39 @@ final class TableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    dataSource = TableViewDataSource()
 
-    tableView.dataSource = dataSource
-    tableView.delegate = dataSource
-    
+    if dataSource == nil {
+      dataSource = TableViewDataSource()
+    }
+
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 44
+  }
+
+  func setUp() {
+    tableView.dataSource = dataSource
+    tableView.delegate = dataSource
+  }
+
+  // Delegate the methods below to the data source object.
+
+  // MARK: - Data source
+  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return dataSource.numberOfSectionsInTableView(tableView)
+  }
+
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return dataSource.tableView(tableView, numberOfRowsInSection: section)
+  }
+
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->
+    UITableViewCell {
+
+      return dataSource.tableView(tableView, cellForRowAtIndexPath: indexPath)
+  }
+
+  // MARK: - Delegate
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    return dataSource.tableView(tableView, didSelectRowAtIndexPath: indexPath)
   }
 }

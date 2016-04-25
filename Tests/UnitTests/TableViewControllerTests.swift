@@ -29,12 +29,16 @@ final class TableViewControllerTests: XCTestCase {
   override func setUp() {
     storyboard = UIStoryboard(name: Identifier.Storyboard.rawValue, bundle: NSBundle.mainBundle())
     sut = storyboard.instantiateViewControllerWithIdentifier(Identifier.ViewController.rawValue) as!
-      TableViewController
+    TableViewController
+    sut.dataSource = TableViewDataSource(dataSource: dataSource)
+    sut.setUp()
+    UIApplication.sharedApplication().keyWindow!.rootViewController = sut
   }
 
   override func tearDown() {
     storyboard = nil
     sut = nil
+    UIApplication.sharedApplication().keyWindow!.rootViewController = nil
   }
 
   func testStoryboardIsNotNil() {
@@ -49,9 +53,18 @@ final class TableViewControllerTests: XCTestCase {
     )
     let viewController = storyboard.instantiateViewControllerWithIdentifier(
       Identifier.ViewController.rawValue
-    ) as! TableViewController
+      ) as! TableViewController
 
     XCTAssertNotNil(viewController)
+  }
+
+  func testDataSourceIsNotNil() {
+    XCTAssertNotNil(sut.dataSource)
+    XCTAssertNotNil(sut.dataSource.dataSource)
+  }
+
+  func testDataSourceCount() {
+    XCTAssertEqual(sut.dataSource.dataSource.count, dataSource.count)
   }
 
   func testNumberOfSections() {
@@ -59,30 +72,23 @@ final class TableViewControllerTests: XCTestCase {
   }
 
   func testNumberOfRowsInSection() {
-    let section = 0
-    XCTAssertEqual(
-      sut.tableView(sut.tableView, numberOfRowsInSection: section),
-      dataSource.count
-    )
+    XCTAssertEqual(sut.tableView(sut.tableView, numberOfRowsInSection: 0), dataSource.count)
   }
 
   func testTableViewDequeuesSubtitleRow() {
-    sut.tableView.registerClass(SubtitleCell.self, forCellReuseIdentifier: "subtitle")
     let indexPath = NSIndexPath(forRow: 0, inSection: 0)
     let cell = sut.tableView(sut.tableView, cellForRowAtIndexPath: indexPath)
 
     XCTAssertNotNil(cell)
     XCTAssertTrue(cell is SubtitleCell)
   }
-  /*
-   // This crashes because there the picker view is an IBOutlet and it is nil.
-   func testTableViewDequeuesPickerRow() {
-   viewController.tableView.registerClass(PickerCell.self, forCellReuseIdentifier: "picker")
-   let indexPath = NSIndexPath(forRow: 2, inSection: 0)
-   let cell = viewController.tableView(viewController.tableView, cellForRowAtIndexPath: indexPath)
 
-   XCTAssertNotNil(cell)
-   XCTAssertTrue(cell is PickerCell)
-   }
-   */
+  // This crashes because there the picker view is an IBOutlet and it is nil.
+  func testTableViewDequeuesPickerRow() {
+    let indexPath = NSIndexPath(forRow: 2, inSection: 0)
+    let cell = sut.tableView(sut.tableView, cellForRowAtIndexPath: indexPath)
+
+    XCTAssertNotNil(cell)
+    XCTAssertTrue(cell is PickerCell)
+  }
 }
