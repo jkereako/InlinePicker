@@ -10,8 +10,6 @@ import XCTest
 @testable import InlinePicker
 
 final class TableViewControllerTests: XCTestCase {
-  private let storyboardName = "Main"
-  private let viewControllerStoryboardIdentifier = "tableViewController"
   private var storyboard: UIStoryboard!
   private var sut: TableViewController!
   private let dataSource: [CellModelType] = [
@@ -23,25 +21,37 @@ final class TableViewControllerTests: XCTestCase {
     SubtitleCellModel(rowIndex: 5, title: "Row 5", subTitle: "subtitle 6")
   ]
 
+  private enum Identifier: String {
+    case Storyboard = "Main"
+    case ViewController = "tableViewController"
+  }
+
   override func setUp() {
-    storyboard = UIStoryboard(name: storyboardName, bundle: NSBundle.mainBundle())
-    sut = storyboard.instantiateViewControllerWithIdentifier(viewControllerStoryboardIdentifier) as?
+    storyboard = UIStoryboard(name: Identifier.Storyboard.rawValue, bundle: NSBundle.mainBundle())
+    sut = storyboard.instantiateViewControllerWithIdentifier(Identifier.ViewController.rawValue) as!
       TableViewController
   }
 
   override func tearDown() {
+    storyboard = nil
     sut = nil
   }
 
   func testStoryboardIsNotNil() {
-    XCTAssertNotNil(UIStoryboard(name: storyboardName, bundle: NSBundle.mainBundle()))
+    XCTAssertNotNil(
+      UIStoryboard(name: Identifier.Storyboard.rawValue, bundle: NSBundle.mainBundle())
+    )
   }
 
   func testViewControllerIsNotNil() {
-    let storyboard = UIStoryboard(name: storyboardName, bundle: NSBundle.mainBundle())
-    XCTAssertNotNil(
-      storyboard.instantiateViewControllerWithIdentifier(viewControllerStoryboardIdentifier)
+    let storyboard = UIStoryboard(
+      name: Identifier.Storyboard.rawValue, bundle: NSBundle.mainBundle()
     )
+    let viewController = storyboard.instantiateViewControllerWithIdentifier(
+      Identifier.ViewController.rawValue
+    ) as! TableViewController
+
+    XCTAssertNotNil(viewController)
   }
 
   func testNumberOfSections() {
