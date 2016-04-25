@@ -32,6 +32,8 @@ final class TableViewControllerTests: XCTestCase {
     TableViewController
     sut.dataSource = TableViewDataSource(dataSource: dataSource)
     sut.setUp()
+
+    // This line gurantees that the initial view controller is the TableViewController
     UIApplication.sharedApplication().keyWindow!.rootViewController = sut
   }
 
@@ -83,7 +85,6 @@ final class TableViewControllerTests: XCTestCase {
     XCTAssertTrue(cell is SubtitleCell)
   }
 
-  // This crashes because there the picker view is an IBOutlet and it is nil.
   func testTableViewDequeuesPickerRow() {
     let indexPath = NSIndexPath(forRow: 2, inSection: 0)
     let cell = sut.tableView(sut.tableView, cellForRowAtIndexPath: indexPath)
