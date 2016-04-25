@@ -99,8 +99,8 @@
 		3684B3A31CC70C2600779F1B /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				36C12AFA1CC68EE100F17929 /* PickerViewDataSource.swift */,
 				36D6430B1CC66F9700E0001C /* TableViewDataSource.swift */,
+				36C12AFA1CC68EE100F17929 /* PickerViewDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
