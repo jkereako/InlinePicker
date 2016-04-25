@@ -10,14 +10,24 @@ import XCTest
 @testable import InlinePicker
 
 final class TableViewDataSourceTests: XCTestCase {
+  private var dataSource: TableViewDataSource!
+
+  override func setUp() {
+    dataSource = TableViewDataSource()
+  }
+
+  override func tearDown() {
+    dataSource = nil
+  }
+
   func testDataSourceIsNotNil() {
-    XCTAssertNotNil(TableViewDataSource.dataSource)
+    XCTAssertNotNil(dataSource.dataSource)
   }
 
   func testDataSourceValues() {
-    for i in 0..<TableViewDataSource.dataSource.count {
-      XCTAssertTrue(TableViewDataSource.dataSource[i] is SubtitleCellModel)
-      XCTAssertEqual(TableViewDataSource.dataSource[i].rowIndex, i)
+    for i in 0..<dataSource.dataSource.count {
+      XCTAssertTrue(dataSource.dataSource[i] is SubtitleCellModel)
+      XCTAssertEqual(dataSource.dataSource[i].rowIndex, i)
     }
   }
 }

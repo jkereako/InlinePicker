@@ -20,7 +20,7 @@ final class TableViewControllerTests: XCTestCase {
   ]
 
   override func setUp() {
-    sut = TableViewController(style: .Plain, dataSource: dataSource)
+    sut = TableViewController(style: .Plain, dataSource: TableViewDataSource())
   }
 
   override func tearDown() {
