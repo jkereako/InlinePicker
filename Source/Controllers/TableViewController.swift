@@ -11,12 +11,6 @@ import UIKit
 final class TableViewController: UITableViewController {
   var dataSource: TableViewDataSource!
 
-  convenience init(style: UITableViewStyle, dataSource: TableViewDataSource) {
-    self.init(style: style)
-
-    self.dataSource = dataSource
-  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -28,7 +22,8 @@ final class TableViewController: UITableViewController {
     tableView.estimatedRowHeight = 44
   }
 
-  func setUp() {
+  func setUpWithDataSource(dataSource: TableViewDataSource) {
+    self.dataSource = dataSource
     tableView.dataSource = dataSource
     tableView.delegate = dataSource
   }
