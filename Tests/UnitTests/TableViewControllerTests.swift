@@ -92,4 +92,43 @@ final class TableViewControllerTests: XCTestCase {
     XCTAssertNotNil(cell)
     XCTAssertTrue(cell is PickerCell)
   }
+
+  /// A tap on the picker view cell ought to have no effect. This test simulates a tap on the picker
+  /// view cell.
+  func testSelectionOfSubtitleCellCreatesAPickerCellBelow() {
+    let rowIndex = 3
+    // This code is identical to the test above it. Uncertain if it's bad practice.
+    let subtitleCellIndexPath = NSIndexPath(forRow: rowIndex, inSection: 0)
+    let subtitleCell = sut.tableView(sut.tableView, cellForRowAtIndexPath: subtitleCellIndexPath)
+
+    XCTAssertNotNil(subtitleCell)
+    XCTAssertTrue(subtitleCell is SubtitleCell)
+
+    sut.tableView(sut.tableView, didSelectRowAtIndexPath: subtitleCellIndexPath)
+
+    let pickerCellIndexPath = NSIndexPath(forRow: rowIndex + 1, inSection: 0)
+
+    let pickerCell = sut.tableView(sut.tableView, cellForRowAtIndexPath: pickerCellIndexPath)
+
+    XCTAssertNotNil(pickerCell)
+    XCTAssertTrue(pickerCell is PickerCell)
+  }
+
+  /// A tap on the picker view cell ought to have no effect. This test simulates a tap on the picker
+  /// view cell.
+  func testSelectionOfPickerCellDoesNothing() {
+    // This code is identical to the test above it. Uncertain if it's bad practice.
+    let indexPath = NSIndexPath(forRow: 2, inSection: 0)
+    let pickerCell = sut.tableView(sut.tableView, cellForRowAtIndexPath: indexPath)
+
+    XCTAssertNotNil(pickerCell)
+    XCTAssertTrue(pickerCell is PickerCell)
+
+    sut.tableView(sut.tableView, didSelectRowAtIndexPath: indexPath)
+
+    let subtitleCell = sut.tableView(sut.tableView, cellForRowAtIndexPath: indexPath)
+
+    XCTAssertNotNil(subtitleCell)
+    XCTAssertTrue(subtitleCell is PickerCell)
+  }
 }
