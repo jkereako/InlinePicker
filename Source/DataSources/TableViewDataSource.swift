@@ -25,7 +25,7 @@ final class TableViewDataSource: NSObject {
 
   convenience init(dataSource: [CellModelType]) {
     self.init()
-    
+
     self.dataSource = dataSource
   }
 }
@@ -47,26 +47,18 @@ extension TableViewDataSource: UITableViewDataSource {
 
       switch cellModel.state {
       case .Closed:
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(
+        let cell = tableView.dequeueReusableCellWithIdentifier(
           CellIdentifier.Subtitle.rawValue, forIndexPath: indexPath
-          ) as? SubtitleCell else {
-
-            assertionFailure("Unable to dequeue `SubtitleCell`.")
-            return UITableViewCell()
-        }
+          ) as! SubtitleCell
 
         cell.model = cellModel as? SubtitleCellModel
 
         return cell
 
       case .Open:
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(
+        let cell = tableView.dequeueReusableCellWithIdentifier(
           CellIdentifier.Picker.rawValue, forIndexPath: indexPath
-          ) as? PickerCell else {
-
-            assertionFailure("Unable to dequeue `PickerCell`.")
-            return UITableViewCell()
-        }
+          ) as! PickerCell
 
         cell.model = cellModel as? PickerViewCellModel
         return cell
