@@ -41,7 +41,10 @@ final class TableViewControllerTests: TableViewControllerTestCase {
   }
 
   func testNumberOfRowsInSection() {
-    XCTAssertEqual(sut.tableView(sut.tableView, numberOfRowsInSection: 0), dataSource.count)
+    let section = 0
+    XCTAssertEqual(
+      sut.tableView(sut.tableView, numberOfRowsInSection: section), dataSource[section].count
+    )
   }
 
   func testTableViewDequeuesSubtitleRow() {

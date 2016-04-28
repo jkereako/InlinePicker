@@ -12,14 +12,14 @@ import XCTest
 class TableViewControllerTestCase: XCTestCase {
   var storyboard: UIStoryboard!
   var sut: TableViewController!
-  let dataSource: [CellModelType] = [
+  let dataSource: [[CellModelType]] = [[
     SubtitleCellModel(rowIndex: 0, title: "Row 1", subTitle: "subtitle 1"),
     SubtitleCellModel(rowIndex: 1, title: "Row 2", subTitle: "subtitle 2"),
     PickerViewCellModel(rowIndex: 2),
     SubtitleCellModel(rowIndex: 3, title: "Row 4", subTitle: "subtitle 4"),
     SubtitleCellModel(rowIndex: 4, title: "Row 5", subTitle: "subtitle 5"),
     SubtitleCellModel(rowIndex: 5, title: "Row 5", subTitle: "subtitle 6")
-  ]
+  ]]
 
   enum Identifier: String {
     case Storyboard = "Main"

@@ -47,7 +47,7 @@
 
 /* Begin PBXFileReference section */
 		360FE52B1CC943DF00A9A5B8 /* TableViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerTests.swift; sourceTree = "<group>"; };
-		360FE52D1CC94DA000A9A5B8 /* TableViewDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSourceTests.swift; sourceTree = "<group>"; };
+		360FE52D1CC94DA000A9A5B8 /* TableViewDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewDataSourceTests.swift; path = ../TableViewDataSourceTests.swift; sourceTree = "<group>"; };
 		360FE5311CC9654900A9A5B8 /* PickerViewDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewDataSourceTests.swift; sourceTree = "<group>"; };
 		36635DEC1CD253F900AF5EB3 /* RowSelectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowSelectionTests.swift; sourceTree = "<group>"; };
 		36635DEE1CD2541400AF5EB3 /* TableViewControllerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerTestCase.swift; sourceTree = "<group>"; };
@@ -102,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				36635DEC1CD253F900AF5EB3 /* RowSelectionTests.swift */,
+				360FE52D1CC94DA000A9A5B8 /* TableViewDataSourceTests.swift */,
 				360FE52B1CC943DF00A9A5B8 /* TableViewControllerTests.swift */,
 				36635DEE1CD2541400AF5EB3 /* TableViewControllerTestCase.swift */,
 			);
@@ -165,7 +166,6 @@
 				36635DEB1CD253D800AF5EB3 /* TableViewController */,
 				620216411CC5BED6003C71EE /* Info.plist */,
 				360FE5311CC9654900A9A5B8 /* PickerViewDataSourceTests.swift */,
-				360FE52D1CC94DA000A9A5B8 /* TableViewDataSourceTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";

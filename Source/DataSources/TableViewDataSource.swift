@@ -10,20 +10,20 @@ import UIKit
 
 /// Helper object whose responsibility is to build the data source for the table view.
 final class TableViewDataSource: NSObject {
-  var dataSource: [CellModelType] = [
+  var dataSource: [[CellModelType]] = [[
     SubtitleCellModel(rowIndex: 0, title: "Title", subTitle: "subtitle"),
     SubtitleCellModel(rowIndex: 1, title: "Title", subTitle: "subtitle"),
     SubtitleCellModel(rowIndex: 2, title: "Title", subTitle: "subtitle"),
     SubtitleCellModel(rowIndex: 3, title: "Title", subTitle: "subtitle"),
     SubtitleCellModel(rowIndex: 4, title: "Title", subTitle: "subtitle")
-  ]
+    ]]
 
   private enum CellIdentifier: String {
     case Subtitle = "subtitle"
     case Picker = "picker"
   }
 
-  convenience init(dataSource: [CellModelType]) {
+  convenience init(dataSource: [[CellModelType]]) {
     self.init()
 
     self.dataSource = dataSource
@@ -33,17 +33,17 @@ final class TableViewDataSource: NSObject {
 // MARK: - Data source
 extension TableViewDataSource: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
+    return dataSource.count
   }
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dataSource.count
+    return dataSource[section].count
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->
     UITableViewCell {
 
-      let cellModel = dataSource[indexPath.row]
+      let cellModel = dataSource[indexPath.section][indexPath.row]
 
       switch cellModel.state {
       case .Closed:
@@ -69,14 +69,14 @@ extension TableViewDataSource: UITableViewDataSource {
 // MARK: - Delegate
 extension TableViewDataSource: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    var cellModel = dataSource[indexPath.row]
+    var cellModel = dataSource[indexPath.section][indexPath.row]
     // Prevents out-of-bounds indexing; either fetches the last row or the "next row".
-    let rowIndex = min(indexPath.row + 1, dataSource.count - 1)
+    let rowIndex = min(indexPath.row + 1, dataSource[indexPath.section].count - 1)
 
     switch cellModel.state {
     case .Closed:
       // Investigate the next cell model: If it's open, close it, and if it's closed, open it.
-      let nextCellModel = dataSource[rowIndex]
+      let nextCellModel = dataSource[indexPath.section][rowIndex]
 
       switch nextCellModel.state {
       case .Open:
@@ -86,7 +86,7 @@ extension TableViewDataSource: UITableViewDelegate {
         cell?.model = nil
         cellModel.values = nextCellModel.values
 
-        dataSource.removeAtIndex(nextCellModel.rowIndex)
+        dataSource[indexPath.section].removeAtIndex(nextCellModel.rowIndex)
 
         tableView.deleteRowsAtIndexPaths(
           [NSIndexPath(forRow: rowIndex, inSection: indexPath.section)],
@@ -106,7 +106,7 @@ extension TableViewDataSource: UITableViewDelegate {
         }
         let nextCellModel = PickerViewCellModel(rowIndex: nextRowIndex)
 
-        dataSource.insert(nextCellModel, atIndex: nextRowIndex)
+        dataSource[indexPath.section].insert(nextCellModel, atIndex: nextRowIndex)
 
         UIView.animateWithDuration(
           0.25,

@@ -26,8 +26,10 @@ final class TableViewDataSourceTests: XCTestCase {
 
   func testDataSourceValues() {
     for i in 0..<dataSource.dataSource.count {
-      XCTAssertTrue(dataSource.dataSource[i] is SubtitleCellModel)
-      XCTAssertEqual(dataSource.dataSource[i].rowIndex, i)
+      for j in 0..<dataSource.dataSource[i].count {
+        XCTAssertTrue(dataSource.dataSource[i][j] is SubtitleCellModel)
+        XCTAssertEqual(dataSource.dataSource[i][j].rowIndex, j)
+      }
     }
   }
 }
