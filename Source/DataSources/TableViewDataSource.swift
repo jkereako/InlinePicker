@@ -23,6 +23,8 @@ final class TableViewDataSource: NSObject {
     case Picker = "picker"
   }
 
+  private var pickerCellIndexPath: NSIndexPath?
+
   convenience init(dataSource: [[CellModelType]]) {
     self.init()
 
@@ -69,61 +71,47 @@ extension TableViewDataSource: UITableViewDataSource {
 // MARK: - Delegate
 extension TableViewDataSource: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    var cellModel = dataSource[indexPath.section][indexPath.row]
-    // Prevents out-of-bounds indexing; either fetches the last row or the "next row".
-    let rowIndex = min(indexPath.row + 1, dataSource[indexPath.section].count - 1)
+    let cellModel = dataSource[indexPath.section][indexPath.row]
+    var nextRowIndex = indexPath.row + 1
 
     switch cellModel.state {
     case .Closed:
-      // Investigate the next cell model: If it's open, close it, and if it's closed, open it.
-      let nextCellModel = dataSource[indexPath.section][rowIndex]
+      // If we have a picker view cell open, close it.
+      if let pickerIndexPath = pickerCellIndexPath {
 
-      switch nextCellModel.state {
-      case .Open:
-        let anIndexPath = NSIndexPath(forRow: rowIndex, inSection: indexPath.section)
-        let cell = tableView.cellForRowAtIndexPath(anIndexPath) as? PickerCell
+        nextRowIndex = indexPath.row
 
-        cell?.model = nil
-        cellModel.values = nextCellModel.values
+        dataSource[pickerIndexPath.section].removeAtIndex(pickerIndexPath.row)
 
-        dataSource[indexPath.section].removeAtIndex(nextCellModel.rowIndex)
+        tableView.deleteRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Top)
 
-        tableView.deleteRowsAtIndexPaths(
-          [NSIndexPath(forRow: rowIndex, inSection: indexPath.section)],
-          withRowAnimation: .Top
-        )
+        pickerCellIndexPath = nil
 
-        //        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-
-      case .Closed:
-        var nextRowIndex = rowIndex
-
-        // If `nextCellModel` and `cellModel` have the same index, then they both reference the last
-        // row in the table. If so, increment `nextRowIndex` by 1 so we may append a picker view to
-        // the bottom of the table.
-        if nextCellModel.rowIndex == cellModel.rowIndex {
-          nextRowIndex = indexPath.row + 1
+        // If we selected the who which is displaying the picker cell, then return early and do not
+        // add a new picker row.
+        if pickerIndexPath.section == indexPath.section && pickerIndexPath.row == indexPath.row + 1 {
+          return
         }
-        let nextCellModel = PickerViewCellModel(rowIndex: nextRowIndex)
-
-        dataSource[indexPath.section].insert(nextCellModel, atIndex: nextRowIndex)
-
-        UIView.animateWithDuration(
-          0.25,
-          delay: 0,
-          usingSpringWithDamping: 0.6,
-          initialSpringVelocity: 0.3,
-          options: .CurveEaseIn,
-          animations: {
-            tableView.insertRowsAtIndexPaths(
-              [NSIndexPath(forRow: nextRowIndex, inSection: indexPath.section)],
-              withRowAnimation: .Top
-            )
-          },
-          completion: nil
-        )
       }
-      
+
+      // Open a new picker view cell and save its location.
+      let nextCellModel = PickerViewCellModel(rowIndex: nextRowIndex)
+
+      dataSource[indexPath.section].insert(nextCellModel, atIndex: nextRowIndex)
+      pickerCellIndexPath = NSIndexPath(forRow: nextRowIndex, inSection: indexPath.section)
+
+      UIView.animateWithDuration(
+        0.25,
+        delay: 0,
+        usingSpringWithDamping: 0.6,
+        initialSpringVelocity: 0.3,
+        options: .CurveEaseIn,
+        animations: { [unowned self] in
+          tableView.insertRowsAtIndexPaths([self.pickerCellIndexPath!], withRowAnimation: .Top)
+        },
+        completion: nil
+      )
+
     case .Open:
       // Do not respond to a tap on an open row
       break
