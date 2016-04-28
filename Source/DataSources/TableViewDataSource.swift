@@ -79,7 +79,11 @@ extension TableViewDataSource: UITableViewDelegate {
       // If we have a picker view cell open, close it.
       if let pickerIndexPath = pickerCellIndexPath {
 
-        nextRowIndex = indexPath.row
+        // The removal of the picker cell only affects the row indexes of rows beneath it. This
+        // check updates the value of `nextRowIndex` if the selected cell is beneath the picker cell.
+        if indexPath.row > pickerIndexPath.row {
+          nextRowIndex = indexPath.row
+        }
 
         dataSource[pickerIndexPath.section].removeAtIndex(pickerIndexPath.row)
 
@@ -87,8 +91,7 @@ extension TableViewDataSource: UITableViewDelegate {
 
         pickerCellIndexPath = nil
 
-        // If we selected the who which is displaying the picker cell, then return early and do not
-        // add a new picker row.
+        // Return early if the selected cell is the owner of the picker cell
         if pickerIndexPath.section == indexPath.section && pickerIndexPath.row == indexPath.row + 1 {
           return
         }
