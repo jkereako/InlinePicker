@@ -48,7 +48,7 @@
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="subTitleCell"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="picker" rowHeight="216" id="fHQ-fv-mqC" customClass="PickerCell" customModule="InlinePicker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="picker" rowHeight="216" id="fHQ-fv-mqC" customClass="PickerCell" customModule="InlinePicker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="137.5" width="600" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fHQ-fv-mqC" id="0nf-hF-bAX">
