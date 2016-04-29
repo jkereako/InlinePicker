@@ -25,10 +25,11 @@ final class TableViewDataSource: NSObject {
 
   private var pickerCellIndexPath: NSIndexPath?
 
-  convenience init(dataSource: [[CellModelType]]) {
+  convenience init(dataSource: [[CellModelType]], pickerCellIndexPath: NSIndexPath?) {
     self.init()
 
     self.dataSource = dataSource
+    self.pickerCellIndexPath = pickerCellIndexPath
   }
 }
 
@@ -62,6 +63,8 @@ extension TableViewDataSource: UITableViewDataSource {
           CellIdentifier.Picker.rawValue, forIndexPath: indexPath
           ) as! PickerCell
 
+        cell.backgroundColor = .clearColor()
+        cell.contentView.alpha = 0.0
         cell.model = cellModel as? PickerViewCellModel
         return cell
       }
@@ -85,10 +88,17 @@ extension TableViewDataSource: UITableViewDelegate {
           nextRowIndex = indexPath.row
         }
 
+        UIView.animateWithDuration(
+          0.15,
+          animations: {
+            let cell = tableView.cellForRowAtIndexPath(self.pickerCellIndexPath!)!
+            cell.backgroundColor = .clearColor()
+            cell.contentView.alpha = 0.0
+          }
+        )
+
         dataSource[pickerIndexPath.section].removeAtIndex(pickerIndexPath.row)
-
         tableView.deleteRowsAtIndexPaths([pickerIndexPath], withRowAnimation: .Top)
-
         pickerCellIndexPath = nil
 
         // Return early if the selected cell is the owner of the picker cell
@@ -103,18 +113,15 @@ extension TableViewDataSource: UITableViewDelegate {
       dataSource[indexPath.section].insert(nextCellModel, atIndex: nextRowIndex)
       pickerCellIndexPath = NSIndexPath(forRow: nextRowIndex, inSection: indexPath.section)
 
+      tableView.insertRowsAtIndexPaths([self.pickerCellIndexPath!], withRowAnimation: .Top)
       UIView.animateWithDuration(
-        0.25,
-        delay: 0,
-        usingSpringWithDamping: 0.6,
-        initialSpringVelocity: 0.3,
-        options: .CurveEaseIn,
-        animations: { [unowned self] in
-          tableView.insertRowsAtIndexPaths([self.pickerCellIndexPath!], withRowAnimation: .Top)
-        },
-        completion: nil
+        0.5,
+        animations: {
+          let cell = tableView.cellForRowAtIndexPath(self.pickerCellIndexPath!)!
+          cell.backgroundColor = .whiteColor()
+          cell.contentView.alpha = 1.0
+        }
       )
-
     case .Open:
       // Do not respond to a tap on an open row
       break

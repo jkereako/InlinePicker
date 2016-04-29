@@ -32,7 +32,12 @@ class TableViewControllerTestCase: XCTestCase {
     storyboard = UIStoryboard(name: Identifier.Storyboard.rawValue, bundle: NSBundle.mainBundle())
     sut = storyboard.instantiateViewControllerWithIdentifier(Identifier.ViewController.rawValue) as!
     TableViewController
-    sut.setUpWithDataSource(TableViewDataSource(dataSource: dataSource))
+    sut.setUpWithDataSource(
+      TableViewDataSource(
+        dataSource: dataSource,
+        pickerCellIndexPath: NSIndexPath(forRow: 2, inSection: 0)
+      )
+    )
 
     // This line gurantees that the initial view controller is the TableViewController
     UIApplication.sharedApplication().keyWindow!.rootViewController = sut
